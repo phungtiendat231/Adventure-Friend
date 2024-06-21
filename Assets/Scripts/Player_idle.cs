@@ -70,11 +70,7 @@ public class Player_idle : MonoBehaviour
             ScoreText.text = "Score: " + Scoring.totalScore;
             Debug.Log(Scoring.totalScore);
             collision.gameObject.SetActive(false);
-        }    
-        if(collision.tag=="Traps")
-        {
-
-        }    
+        }      
     }
 
 }
