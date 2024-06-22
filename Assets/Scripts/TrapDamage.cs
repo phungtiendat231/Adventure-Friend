@@ -11,6 +11,8 @@ public class TrapDamage : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             collision.GetComponent<Health>().TakeDamage(damage);
+            
+            
         }
     }
 }

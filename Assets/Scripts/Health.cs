@@ -7,6 +7,7 @@ public class Health : MonoBehaviour
     [SerializeField] private float startingHealth;
     public float currentHealth { get; private set; }// get: có thể lấy ra dùng ở các script khác, private set: chỉ có thể thay đổi ở script này
     private Animator anim;
+    private GameObject player;
 
     private void Awake()
     {

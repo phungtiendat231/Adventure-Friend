@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class Player_idle : MonoBehaviour
 {
+    public ParticleSystem dusts;
     [Header("Moving")]
     private float horizontal;
     public float speed =10f;
@@ -48,6 +49,7 @@ public class Player_idle : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, jumpingForce);
             isGrounded = false;
             anim.SetBool("isJumping",!isGrounded);
+            CreateDust();
         }
     }
     private void Flip()
@@ -58,7 +60,12 @@ public class Player_idle : MonoBehaviour
             Vector3 localScale = transform.localScale;
             localScale.x *= -1f;
             transform.localScale = localScale;
+            CreateDust();
         }
+    }
+    void CreateDust()
+    {
+        dusts.Play();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
