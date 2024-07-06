@@ -8,11 +8,15 @@ public class Health : MonoBehaviour
     public float currentHealth { get; private set; }// get: có thể lấy ra dùng ở các script khác, private set: chỉ có thể thay đổi ở script này
     private Animator anim;
     private GameObject player;
+    Vector2 startPos;
+    [SerializeField] private Transform respawnPos;
 
     private void Awake()
     {
         currentHealth = startingHealth;
         anim = GetComponent<Animator>();
+        player = GameObject.Find("Player");
+        startPos = respawnPos.position;
     }
     public void TakeDamage(float damage)
     {
@@ -23,15 +27,21 @@ public class Health : MonoBehaviour
         }
         else
         {
-            anim.SetTrigger("Die");
+            anim.SetTrigger("Death");
+            
+            StartCoroutine(ResetAfterDelay(0.5f));
         }
-
     }
-    private void Update()
+
+    IEnumerator ResetAfterDelay(float delay)
     {
-        if(Input.GetKeyDown(KeyCode.E))
-        {
-            TakeDamage(1);
-        }    
+        yield return new WaitForSeconds(delay);
+
+        // Thiết lập Trigger tiếp theo sau 2 giây
+        anim.SetTrigger("Back");
+
+        // Reset lại vị trí và currentHealth
+        player.transform.position = startPos;
+        currentHealth = 1;
     }
 }
