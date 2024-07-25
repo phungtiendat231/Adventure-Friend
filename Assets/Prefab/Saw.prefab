@@ -9,12 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2260719343300039279}
+  - component: {fileID: 8852951409146175412}
+  - component: {fileID: 2756552960910185739}
   - component: {fileID: 1270684165145079068}
   - component: {fileID: 8039164284214160741}
   - component: {fileID: 2717623156899218254}
-  - component: {fileID: 872435984032052056}
-  - component: {fileID: 2756552960910185739}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Saw
   m_TagString: Traps
   m_Icon: {fileID: 0}
@@ -36,6 +36,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8852951409146175412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2408398489745808994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7b1f6522252ea54e820137adec82d19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  posA: {fileID: 0}
+  posB: {fileID: 0}
+  speed: 5
+--- !u!114 &2756552960910185739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2408398489745808994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 525702ffe1c975844b4d2846f06ae2f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
 --- !u!212 &1270684165145079068
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -154,28 +182,3 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &872435984032052056
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2408398489745808994}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca8d8ab9d3c4300418d2d3eb35ae6bfc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2756552960910185739
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2408398489745808994}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 525702ffe1c975844b4d2846f06ae2f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 0.1

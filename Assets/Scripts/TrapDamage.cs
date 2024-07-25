@@ -13,24 +13,6 @@ public class TrapDamage : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             collision.GetComponent<Health>().TakeDamage(damage);
-
-
         }
-        /*        if (collision.CompareTag("Player"))
-                {
-                    if (!isPlayerInTrap)
-                    {
-                        isPlayerInTrap = true;
-                        damageCoroutine = StartCoroutine(DamagePlayer(playerHealth));
-                    }
-                }*/
     }
-/*        private IEnumerator DamagePlayer(Health playerHealth)
-    {
-        while (isPlayerInTrap)
-        {
-            playerHealth.TakeDamage(damage);
-            yield return new WaitForSeconds(2f);
-        }
-    }*/
 }

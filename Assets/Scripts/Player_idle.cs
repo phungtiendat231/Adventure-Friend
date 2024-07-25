@@ -1,26 +1,35 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Player_idle : MonoBehaviour
 {
+    [SerializeField] private Rigidbody2D rb;
+    private Animator anim;
     public ParticleSystem dusts;
-    [Header("Moving")]
+
+    [Header("-------------Moving------------------")]
     private float horizontal;
-    public float speed =10f;
-    public float jumpingForce = 16f;
+    [SerializeField] public float speed;
+    [SerializeField] public float jumpingForce;
     private bool isFacingRight = true;
     bool isGrounded = false;
+    /*[Header("Wall Jump")]
+    public Transform wallCheck;
+    public bool isWallTouching;
+    public bool isSliding;
+    public float isSlidingSpeed;*/
     
-    [SerializeField] private Animator anim;
-    [SerializeField] private Rigidbody2D rb;
-    [Header("HealthBar")]
-    public Text ScoreText;
+    
+    [Header("-------------HealthBar---------------")]
+    public TextMeshProUGUI ScoreText;
     public HealthBar healthBar;
     private int score;
+
 
 
     void Start()
@@ -39,6 +48,7 @@ public class Player_idle : MonoBehaviour
     void FixedUpdate()
     {
         rb.velocity = new Vector2 (horizontal * speed, rb.velocity.y);
+        
         anim.SetFloat("xVelocity",Math.Abs(rb.velocity.x));
         anim.SetFloat("yVelocity",rb.velocity.y);
     }
@@ -46,6 +56,7 @@ public class Player_idle : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
+            SoundManager.instance.PlaySFX("Jump");
             rb.velocity = new Vector2(rb.velocity.x, jumpingForce);
             isGrounded = false;
             anim.SetBool("isJumping",!isGrounded);
@@ -73,6 +84,7 @@ public class Player_idle : MonoBehaviour
         anim.SetBool("isJumping", !isGrounded);
         if(collision.tag=="Fruits")
         {
+            SoundManager.instance.PlaySFX("Collect");
             Scoring.totalScore += 1;
             ScoreText.text = "Score: " + Scoring.totalScore;
             Debug.Log(Scoring.totalScore);
