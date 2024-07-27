@@ -26,8 +26,7 @@ public class Player_idle : MonoBehaviour
     
     
     [Header("-------------HealthBar---------------")]
-    public TextMeshProUGUI ScoreText;
-    public HealthBar healthBar;
+    public Text ScoreText;
     private int score;
 
 
