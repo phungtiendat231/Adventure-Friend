@@ -14,14 +14,16 @@ public class Button_Menu : MonoBehaviour
     }
     public void OpenMenuPanel()
     {
-        if(activate == false || (Input.GetKeyDown(KeyCode.Escape) && activate == false) )
+        /*if(activate == false || (Input.GetKeyDown(KeyCode.Tab) && activate == false) )*/
+        if(activate == false )
         {
             menu.SetActive(true);
             Time.timeScale = 0;// pause game
             activate = true;
 
         }
-        else if (activate == true || (Input.GetKeyDown(KeyCode.Escape) && activate == true))
+        /*else if (activate == true || (Input.GetKeyDown(KeyCode.Tab) && activate == true))*/
+        else if (activate == true)
         {
             menu.SetActive(false);
             Time.timeScale = 1;// unpause game

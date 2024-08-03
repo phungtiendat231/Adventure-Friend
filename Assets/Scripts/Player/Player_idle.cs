@@ -18,15 +18,14 @@ public class Player_idle : MonoBehaviour
     [SerializeField] public float jumpingForce;
     private bool isFacingRight = true;
     bool isGrounded = false;
-    /*[Header("Wall Jump")]
-    public Transform wallCheck;
-    public bool isWallTouching;
-    public bool isSliding;
-    public float isSlidingSpeed;*/
-    
-    
+    int JumpCount = 2;
+    public float fallThreshold; // Ngưỡng để xác định khi người chơi rơi
+
+    private Enemy_Controller enemyControl;
+    public GameObject enemy;
     [Header("-------------HealthBar---------------")]
     public Text ScoreText;
+    
     private int score;
 
 
@@ -42,6 +41,7 @@ public class Player_idle : MonoBehaviour
         horizontal = Input.GetAxisRaw("Horizontal");
         Jump();
         Flip();
+        //Fall();
     }
 
     void FixedUpdate()
@@ -51,17 +51,34 @@ public class Player_idle : MonoBehaviour
         anim.SetFloat("xVelocity",Math.Abs(rb.velocity.x));
         anim.SetFloat("yVelocity",rb.velocity.y);
     }
+/*    private void Fall()
+    {
+        if (rb.velocity.y < fallThreshold && !isFalling)
+        {
+            isFalling = true;
+            anim.SetBool("isJumping", !isGrounded);
+        }
+
+        // Kiểm tra nếu người chơi chạm đất
+        if (isFalling)
+        {
+            isFalling = false;
+        }
+    } */   
     private void Jump()
     {
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        if (Input.GetButtonDown("Jump") && JumpCount>0)
         {
             SoundManager.instance.PlaySFX("Jump");
             rb.velocity = new Vector2(rb.velocity.x, jumpingForce);
             isGrounded = false;
-            anim.SetBool("isJumping",!isGrounded);
+            JumpCount -= 1;
+            anim.SetBool("isJumping", !isGrounded);
             CreateDust();
+            
         }
     }
+
     private void Flip()
     {
         if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
@@ -79,6 +96,7 @@ public class Player_idle : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        JumpCount = 2;
         isGrounded = true;
         anim.SetBool("isJumping", !isGrounded);
         if(collision.tag=="Fruits")
@@ -88,7 +106,7 @@ public class Player_idle : MonoBehaviour
             ScoreText.text = "Score: " + Scoring.totalScore;
             Debug.Log(Scoring.totalScore);
             collision.gameObject.SetActive(false);
-        }      
+        }
     }
 
 }

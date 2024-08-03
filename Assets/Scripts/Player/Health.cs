@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class Health : MonoBehaviour
     [SerializeField] private float iframeDuration;
     [SerializeField] private int numberOfFlashs;
     private SpriteRenderer sR;
+    private bool invulnerable;
 
     private void Awake()
     {
@@ -26,6 +28,7 @@ public class Health : MonoBehaviour
         player = GameObject.Find("Player");
         startPos = respawnPos.position;
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag =="EndBottom")
@@ -33,11 +36,15 @@ public class Health : MonoBehaviour
             currentHealth = 0;
             anim.SetTrigger("Death");
             SoundManager.instance.PlaySFX("Death");
-            StartCoroutine(ResetAfterDelay(0.5f));
+            StartCoroutine(ResetAfterDelay(1f));
+           
+            currentHealth = 1;
         }
     }
     public void TakeDamage(float damage)
     {
+        if (invulnerable)
+            return;
         currentHealth = Mathf.Clamp(currentHealth - damage, 0, startingHealth);
         if (currentHealth > 0)
         {
@@ -49,7 +56,9 @@ public class Health : MonoBehaviour
         {
             anim.SetTrigger("Death");
             SoundManager.instance.PlaySFX("Death");
-            StartCoroutine(ResetAfterDelay(0.5f));
+            StartCoroutine(ResetAfterDelay(1f));
+            
+            currentHealth = 1;
         }
     }
 
@@ -58,14 +67,17 @@ public class Health : MonoBehaviour
         yield return new WaitForSeconds(delay);
 
         // Thiết lập Trigger tiếp theo sau 2 giây
-        anim.SetTrigger("Back");
-
+        //anim.SetTrigger("Back");
+        anim.ResetTrigger("Death");
+        anim.Play("Player_Idle_Run");
         // Reset lại vị trí và currentHealth
         player.transform.position = startPos;
         currentHealth = 1;
     }
+
     IEnumerator Invinciable()
     {
+        invulnerable = true;
         Physics2D.IgnoreLayerCollision(6,7,true);
         // IgnoreLayrerCollision make Player ignore all Enemy( 6 la vi tri cua layer player,...)
         for (int i = 0; i < numberOfFlashs; i++)
@@ -77,5 +89,6 @@ public class Health : MonoBehaviour
             yield return new WaitForSeconds(iframeDuration / (numberOfFlashs * 2));
         }
         Physics2D.IgnoreLayerCollision(6,7,false);
+        invulnerable = false;
     }
 }

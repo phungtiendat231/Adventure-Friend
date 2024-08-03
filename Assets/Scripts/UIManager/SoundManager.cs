@@ -22,7 +22,7 @@ public class SoundManager : MonoBehaviour
     }
     private void Start()
     {
-        PlayMusic("Theme");
+        PlayMusic("Theme_Level 1");
     }
     public void PlayMusic(string name)
     {
@@ -60,10 +60,11 @@ public class SoundManager : MonoBehaviour
     }
     public void MusicVolume(float volume)
     {
-        musicSource.volume = volume; 
+        musicSource.volume = volume;
     }
     public void SFXVolume(float volume)
     {
         sfxSource.volume = volume;
+        PlayerPrefs.SetFloat("sfxVolume", volume);
     }
 }

@@ -6,7 +6,6 @@ public class TrapDamage : MonoBehaviour
 {
     [SerializeField] private float damage;
     //private bool isPlayerInTrap = false;
-    private Coroutine damageCoroutine;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

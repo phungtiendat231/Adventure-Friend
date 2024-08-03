@@ -1,30 +1,39 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Moving_Object : MonoBehaviour
 {
-    public Transform posA, posB;
+    public Transform[] targetPositions;
     [SerializeField] int speed;
-    Vector2 targetPos;
+    int currentTargetIndex = 0;
 
     void Start()
     {
-        targetPos = posB.position;
+        if (targetPositions.Length > 0)
+        {
+            SetTargetPosition(0); // Bắt đầu từ điểm đầu tiên
+        }
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (Vector2.Distance(transform.position, posA.position) < 0.05f)
+        if (Vector2.Distance(transform.position, targetPositions[currentTargetIndex].position) < 0.05f)
         {
-            targetPos = posB.position;
-        }
-        if (Vector2.Distance(transform.position, posB.position) < 0.05f)
-        {
-            targetPos = posA.position;
+            currentTargetIndex = (currentTargetIndex + 1) % targetPositions.Length; // Di chuyển đến điểm tiếp theo trong chu kỳ
+            SetTargetPosition(currentTargetIndex);
+            
         }
 
+        Vector2 targetPos = targetPositions[currentTargetIndex].position;
         transform.position = Vector2.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
+    }
+
+    void SetTargetPosition(int index)
+    {
+        if (index < targetPositions.Length)
+        {
+            currentTargetIndex = index;
+        }
     }
 }

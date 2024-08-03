@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    public static UIManager instance { get; private set; }
     [Header("---Music and SFX slider---")]
     public Slider musicSlider;
     public Slider sfxSlider;
@@ -23,6 +24,22 @@ public class UIManager : MonoBehaviour
     {
         musicAvaiableBt = true;
         sfxAvaiableBt = true;
+        if (PlayerPrefs.HasKey("musicVolume"))
+        {
+            LoadVolume();
+        }
+        else
+        {
+            SetMusicVolume();
+        }
+        if (PlayerPrefs.HasKey("sfxVolume"))
+        {
+            LoadVolume();
+        }
+        else
+        {
+            SetSFXVolume();
+        }
     }
     public void ToggleMusic()
     {
@@ -32,14 +49,26 @@ public class UIManager : MonoBehaviour
     {
         SoundManager.instance.ToggleSFX();
     }
-    public void MusicVolume()
+    public void SetMusicVolume()
     {
-        SoundManager.instance.MusicVolume(musicSlider.value);
+        float volume = musicSlider.value;
+        SoundManager.instance.MusicVolume(volume);
+        PlayerPrefs.SetFloat("musicVolume", volume);// Save volume into playerprefs
+
     }
-    public void SFXVolume()
+    public void SetSFXVolume()
     {
+        float volume = sfxSlider.value;
         SoundManager.instance.SFXVolume(sfxSlider.value);
+        PlayerPrefs.SetFloat("sfxVolume", volume);
     }
+    public void LoadVolume()
+    {
+        musicSlider.value = PlayerPrefs.GetFloat("musicVolume");// Get volume from save of playerprefs
+        sfxSlider.value = PlayerPrefs.GetFloat("sfxVolume");
+        SetMusicVolume();
+        SetSFXVolume();
+    }    
     public void ChangeButtonMusic()
     {
         if(musicAvaiableBt == true)
@@ -75,10 +104,14 @@ public class UIManager : MonoBehaviour
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Time.timeScale = 1;
     }    
     public void MainMenu()
     {
         SceneManager.LoadScene(0);
     }    
-
+    public void Start_Button()
+    {
+        SceneManager.LoadScene(1);
+    }
 }

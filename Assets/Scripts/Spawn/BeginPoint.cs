@@ -19,6 +19,7 @@ public class BeginPoint : MonoBehaviour
     {
         if(collision.CompareTag("Player"))
         {
+            
             anim.SetTrigger("TouchSpawn");
         }
     }
