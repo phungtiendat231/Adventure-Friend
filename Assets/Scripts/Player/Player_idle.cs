@@ -19,7 +19,7 @@ public class Player_idle : MonoBehaviour
     private bool isFacingRight = true;
     bool isGrounded = false;
     int JumpCount = 2;
-    public float fallThreshold; // Ngưỡng để xác định khi người chơi rơi
+    //public float fallThreshold; // Ngưỡng để xác định khi người chơi rơi
 
     private Enemy_Controller enemyControl;
     public GameObject enemy;

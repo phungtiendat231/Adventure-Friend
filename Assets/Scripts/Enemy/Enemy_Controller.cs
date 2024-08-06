@@ -13,7 +13,7 @@ public class Enemy_Controller : MonoBehaviour
     int currentTargetIndex = 0;
     [SerializeField] int speed;
     [Header("----------Animator--------")]
-    public Animator anim;
+    private Animator anim;
     private bool isWaiting = false;
     private Coroutine waitCoroutine;
     [SerializeField] private float waitTime;
@@ -22,8 +22,7 @@ public class Enemy_Controller : MonoBehaviour
     [SerializeField] public string anim_Hit;
     [SerializeField] public string anim_Death;
     [Header("----------DeadPoint----------")]
-    public GameObject deadPoint;
-    public GameObject enemy;
+    private TrapDamage trapDame;
     
 
     
@@ -85,7 +84,11 @@ public class Enemy_Controller : MonoBehaviour
     }
     public void PlayAnimDead()
     {
-        /*anim.Play(anim_Death);*/
-        Debug.Log("a");
+        anim.Play(anim_Death);
+        //DisableTrapDamage();
     }
+    public void DisableTrapDamage()
+    {
+        trapDame.enabled = false;
+    }    
 }
