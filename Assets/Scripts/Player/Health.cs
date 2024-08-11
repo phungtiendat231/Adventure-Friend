@@ -1,13 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
+    public static Health instance;
     [Header ("Health")]
     [SerializeField] private float startingHealth;
+    public bool isPlayerDeath = false;
+    private Rigidbody2D rb;
     public float currentHealth { get; private set; }// get: có thể lấy ra dùng ở các script khác, private set: chỉ có thể thay đổi ở script này
     private Animator anim;
     private GameObject player;
@@ -22,13 +26,14 @@ public class Health : MonoBehaviour
 
     private void Awake()
     {
+        instance = this;
+        rb = GetComponent<Rigidbody2D>();
         currentHealth = startingHealth;
         anim = GetComponent<Animator>();
         sR = GetComponent<SpriteRenderer>();    
         player = GameObject.Find("Player");
         startPos = respawnPos.position;
     }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag =="EndBottom")
@@ -36,9 +41,9 @@ public class Health : MonoBehaviour
             currentHealth = 0;
             anim.SetTrigger("Death");
             SoundManager.instance.PlaySFX("Death");
+            isPlayerDeath = true;
+            rb.velocity = Vector2.zero;
             StartCoroutine(ResetAfterDelay(1f));
-           
-            currentHealth = 1;
         }
     }
     public void TakeDamage(float damage)
@@ -46,19 +51,22 @@ public class Health : MonoBehaviour
         if (invulnerable)
             return;
         currentHealth = Mathf.Clamp(currentHealth - damage, 0, startingHealth);
-        if (currentHealth > 0)
+
+        if (currentHealth > 0 && isPlayerDeath == false)
         {
             anim.SetTrigger("Hit");
             SoundManager.instance.PlaySFX("Hit");
             StartCoroutine(Invinciable());
         }
-        else
+        else if (currentHealth == 0 && isPlayerDeath == false)
         {
             anim.SetTrigger("Death");
             SoundManager.instance.PlaySFX("Death");
+            isPlayerDeath = true;
+            rb.gravityScale = 0;
+            rb.velocity = Vector2.zero;
             StartCoroutine(ResetAfterDelay(1f));
             
-            currentHealth = 1;
         }
     }
 
@@ -69,10 +77,17 @@ public class Health : MonoBehaviour
         // Thiết lập Trigger tiếp theo sau 2 giây
         //anim.SetTrigger("Back");
         anim.ResetTrigger("Death");
-        anim.Play("Player_Idle_Run");
+        
         // Reset lại vị trí và currentHealth
         player.transform.position = startPos;
+        yield return new WaitForSeconds(1f);
+        bool isGrounded = false;
+        anim.SetBool("isJumping", !isGrounded);
+        rb.gravityScale = 4;
+        anim.Play("Player_Idle_Run");
         currentHealth = 1;
+        isPlayerDeath = false;
+        
     }
 
     IEnumerator Invinciable()

@@ -19,55 +19,43 @@ public class Player_idle : MonoBehaviour
     private bool isFacingRight = true;
     bool isGrounded = false;
     int JumpCount = 2;
-    //public float fallThreshold; // Ngưỡng để xác định khi người chơi rơi
-
-    private Enemy_Controller enemyControl;
-    public GameObject enemy;
+    public float fallThreshold; // Ngưỡng để xác định khi người chơi rơi
     [Header("-------------HealthBar---------------")]
     public Text ScoreText;
-    
     private int score;
+    
 
 
 
     void Start()
     {
+        
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         ScoreText.text = "Score: " + Scoring.totalScore;
+        
     }
     void Update()
     {   
         horizontal = Input.GetAxisRaw("Horizontal");
         Jump();
         Flip();
-        //Fall();
+        
     }
 
     void FixedUpdate()
     {
-        rb.velocity = new Vector2 (horizontal * speed, rb.velocity.y);
-        
-        anim.SetFloat("xVelocity",Math.Abs(rb.velocity.x));
-        anim.SetFloat("yVelocity",rb.velocity.y);
-    }
-/*    private void Fall()
-    {
-        if (rb.velocity.y < fallThreshold && !isFalling)
+        if(Health.instance != null && Health.instance.currentHealth>0)
         {
-            isFalling = true;
-            anim.SetBool("isJumping", !isGrounded);
-        }
+            rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
 
-        // Kiểm tra nếu người chơi chạm đất
-        if (isFalling)
-        {
-            isFalling = false;
+            anim.SetFloat("xVelocity", Math.Abs(rb.velocity.x));
+            anim.SetFloat("yVelocity", rb.velocity.y);
         }
-    } */   
+    }
     private void Jump()
     {
-        if (Input.GetButtonDown("Jump") && JumpCount>0)
+        if (Input.GetButtonDown("Jump") && JumpCount>0 && Health.instance.currentHealth > 0)
         {
             SoundManager.instance.PlaySFX("Jump");
             rb.velocity = new Vector2(rb.velocity.x, jumpingForce);
@@ -101,12 +89,19 @@ public class Player_idle : MonoBehaviour
         anim.SetBool("isJumping", !isGrounded);
         if(collision.tag=="Fruits")
         {
+            
             SoundManager.instance.PlaySFX("Collect");
             Scoring.totalScore += 1;
             ScoreText.text = "Score: " + Scoring.totalScore;
             Debug.Log(Scoring.totalScore);
             collision.gameObject.SetActive(false);
         }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        isGrounded = false;
+        anim.SetBool("isJumping", !isGrounded);
+        // Fall animation set
     }
 
 }

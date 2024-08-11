@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -28,7 +28,7 @@ public class FireTrap : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag =="Player")
+/*        if(collision.tag =="Player")
         {
             //playerHealth = collision.GetComponent<Health>();
             if(!triggered)
@@ -38,7 +38,7 @@ public class FireTrap : MonoBehaviour
             if(activate)
                 collision.GetComponent<Health>().TakeDamage(damage);
 
-        }
+        }*/ // lý do fire trap ăn 2 dame là do gọi 2 lần TakeDamage
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
