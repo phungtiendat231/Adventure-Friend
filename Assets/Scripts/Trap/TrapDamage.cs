@@ -5,17 +5,21 @@ using UnityEngine;
 public class TrapDamage : MonoBehaviour
 {
     [SerializeField] private float damage;
-    public Health health;
-    private void Start()
-    {
-
-    }
-
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-           collision.GetComponent<Health>().TakeDamage(damage);
+/*            Player_idle.instance.KBCounter = Player_idle.instance.KBTotalTime;
+            if(collision.transform.position.x <= transform.position.x)
+            {
+                Player_idle.instance.KnockFromRight = true;
+            }
+            if (collision.transform.position.x > transform.position.x)
+            {
+                Player_idle.instance.KnockFromRight = false;
+            }*/
+            collision.GetComponent<Health>().TakeDamage(damage);
         }
     }
 }

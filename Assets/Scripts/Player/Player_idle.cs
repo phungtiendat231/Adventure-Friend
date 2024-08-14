@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 public class Player_idle : MonoBehaviour
 {
+    public static Player_idle instance { get; private set; }
     [SerializeField] private Rigidbody2D rb;
     private Animator anim;
     public ParticleSystem dusts;
@@ -19,7 +20,12 @@ public class Player_idle : MonoBehaviour
     private bool isFacingRight = true;
     bool isGrounded = false;
     int JumpCount = 2;
-    public float fallThreshold; // Ngưỡng để xác định khi người chơi rơi
+
+/*    public float KBForce;
+    public float KBCounter;
+    public float KBTotalTime;
+    public bool KnockFromRight;*/
+
     [Header("-------------HealthBar---------------")]
     public Text ScoreText;
     private int score;
@@ -29,7 +35,14 @@ public class Player_idle : MonoBehaviour
 
     void Start()
     {
-        
+/*        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }*/
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         ScoreText.text = "Score: " + Scoring.totalScore;
@@ -45,13 +58,25 @@ public class Player_idle : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(Health.instance != null && Health.instance.currentHealth>0)
+        if(Health.instance != null && Health.instance.currentHealth>0 /*&& KBCounter <=0*/)
         {
             rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
 
             anim.SetFloat("xVelocity", Math.Abs(rb.velocity.x));
             anim.SetFloat("yVelocity", rb.velocity.y);
         }
+/*        else
+        {
+            if(KnockFromRight = true)
+            {
+                rb.velocity = new Vector2(-KBCounter, KBForce);
+            }
+            if(KnockFromRight == false)
+            {
+                rb.velocity = new Vector2(KBCounter, KBForce);
+            }
+            KBCounter -= Time.deltaTime;
+        }*/
     }
     private void Jump()
     {

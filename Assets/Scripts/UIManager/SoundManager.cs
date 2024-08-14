@@ -22,7 +22,8 @@ public class SoundManager : MonoBehaviour
     }
     private void Start()
     {
-        PlayMusic("Theme_Level 1");
+        
+        PlayMusic("Theme_Level 0");
     }
     public void PlayMusic(string name)
     {
@@ -61,6 +62,7 @@ public class SoundManager : MonoBehaviour
     public void MusicVolume(float volume)
     {
         musicSource.volume = volume;
+        PlayerPrefs.SetFloat("musicVolume", volume);
     }
     public void SFXVolume(float volume)
     {

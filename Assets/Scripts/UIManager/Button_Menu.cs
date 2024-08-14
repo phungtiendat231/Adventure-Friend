@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class Button_Menu : MonoBehaviour
 {
     public GameObject menu;
+    public GameObject home;
+    public GameObject restart;
     private bool activate = false;
     private void Start()
     {
@@ -28,7 +30,28 @@ public class Button_Menu : MonoBehaviour
             menu.SetActive(false);
             Time.timeScale = 1;// unpause game
             activate = false;
-        }
-          
+        }   
     }
+    public void OpenMenuPanelInMainMenu()
+    {
+        /*if(activate == false || (Input.GetKeyDown(KeyCode.Tab) && activate == false) )*/
+        if (activate == false)
+        {
+            menu.SetActive(true);
+            home.SetActive(false);
+            restart.SetActive(false);
+
+            Time.timeScale = 0;// pause game
+            activate = true;
+
+        }
+        /*else if (activate == true || (Input.GetKeyDown(KeyCode.Tab) && activate == true))*/
+        else if (activate == true)
+        {
+            menu.SetActive(false);
+            Time.timeScale = 1;// unpause game
+            activate = false;
+        }
+    }
+
 }

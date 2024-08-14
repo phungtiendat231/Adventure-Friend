@@ -24,6 +24,7 @@ public class Health : MonoBehaviour
     private SpriteRenderer sR;
     private bool invulnerable;
 
+    
     private void Awake()
     {
         instance = this;
@@ -82,8 +83,9 @@ public class Health : MonoBehaviour
         player.transform.position = startPos;
         yield return new WaitForSeconds(1f);
         bool isGrounded = false;
-        anim.SetBool("isJumping", !isGrounded);
         rb.gravityScale = 4;
+        anim.SetBool("isJumping", !isGrounded);
+        
         anim.Play("Player_Idle_Run");
         currentHealth = 1;
         isPlayerDeath = false;

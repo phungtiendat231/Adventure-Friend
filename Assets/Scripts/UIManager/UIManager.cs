@@ -105,13 +105,19 @@ public class UIManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Time.timeScale = 1;
+        
     }    
     public void MainMenu()
     {
         SceneManager.LoadScene(0);
+        SoundManager.instance.PlayMusic("Theme_Level 0");
+        /*Play4Animation.instance.PlayAnimation();*/
     }    
     public void Start_Button()
     {
         SceneManager.LoadScene(1);
+        Time.timeScale = 1;
+        SoundManager.instance.PlayMusic("Theme_Level 1");
+
     }
 }

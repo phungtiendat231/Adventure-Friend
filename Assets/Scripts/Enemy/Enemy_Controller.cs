@@ -85,7 +85,7 @@ public class Enemy_Controller : MonoBehaviour
     public void PlayAnimDead()
     {
         anim.Play(anim_Death);
-        //DisableTrapDamage();
+        DisableTrapDamage();
     }
     public void DisableTrapDamage()
     {
