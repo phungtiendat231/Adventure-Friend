@@ -70,14 +70,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6b97c673e517e14dac2b69bf3458bc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 7852805810574663043}
   dusts: {fileID: 7694241570713881455}
-  speed: 15
-  jumpingForce: 20
-  KBForce: 5
-  KBCounter: 0.2
-  KBTotalTime: 0
-  KnockFromRight: 0
+  speed: 10
+  jumpingForce: 16
   ScoreText: {fileID: 0}
 --- !u!212 &6650012848325866280
 SpriteRenderer:

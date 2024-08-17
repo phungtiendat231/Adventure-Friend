@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -15,13 +15,18 @@ public class UIManager : MonoBehaviour
     public GameObject musicButtonOff;
     public GameObject sfxButtonOn;
     public GameObject sfxButtonOff;
+    [Header("---Level Button")]
+    public Button[] button;
     
     
     
     private bool musicAvaiableBt;
     private bool sfxAvaiableBt;
+
+    
     private void Start()
     {
+        
         musicAvaiableBt = true;
         sfxAvaiableBt = true;
         if (PlayerPrefs.HasKey("musicVolume"))
@@ -39,6 +44,23 @@ public class UIManager : MonoBehaviour
         else
         {
             SetSFXVolume();
+        }
+    }
+    private void Awake()
+    {
+        int unlockLevel = PlayerPrefs.GetInt("UnlockedLevel", 1);
+
+        for (int i = 0; i < button.Length; i++)
+        {
+            button[i].interactable = false;
+        }
+
+        // Đảm bảo rằng unlockLevel không vượt quá số lượng phần tử trong mảng button
+        unlockLevel = Mathf.Min(unlockLevel, button.Length);
+
+        for (int i = 0; i < unlockLevel; i++)
+        {
+            button[i].interactable = true;
         }
     }
     public void ToggleMusic()
@@ -101,23 +123,31 @@ public class UIManager : MonoBehaviour
         }
         Debug.Log("sfxAvaiableBt: " + sfxAvaiableBt);
     }
-    public void Restart()
+      
+    public void IntoLevel(string name)
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(name);
         Time.timeScale = 1;
-        
-    }    
-    public void MainMenu()
-    {
-        SceneManager.LoadScene(0);
-        SoundManager.instance.PlayMusic("Theme_Level 0");
-        /*Play4Animation.instance.PlayAnimation();*/
-    }    
-    public void Start_Button()
-    {
-        SceneManager.LoadScene(1);
-        Time.timeScale = 1;
-        SoundManager.instance.PlayMusic("Theme_Level 1");
-
+        if (PlayerPrefs.HasKey("musicVolume"))
+        {
+            LoadVolume();
+        }
+        else
+        {
+            SetMusicVolume();
+        }
+        if (PlayerPrefs.HasKey("sfxVolume"))
+        {
+            LoadVolume();
+        }
+        else
+        {
+            SetSFXVolume();
+        }
     }
+    public void IntoLevelPlayMusic(int number)
+    {
+        SoundManager.instance.PlayMusic("Theme_Level "+number);
+    }
+
 }

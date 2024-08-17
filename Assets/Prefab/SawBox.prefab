@@ -99,7 +99,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  player_Idle: {fileID: 0}
 --- !u!212 &7898140749929226382
 SpriteRenderer:
   m_ObjectHideFlags: 0

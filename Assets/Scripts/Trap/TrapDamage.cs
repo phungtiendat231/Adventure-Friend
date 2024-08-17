@@ -10,15 +10,6 @@ public class TrapDamage : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-/*            Player_idle.instance.KBCounter = Player_idle.instance.KBTotalTime;
-            if(collision.transform.position.x <= transform.position.x)
-            {
-                Player_idle.instance.KnockFromRight = true;
-            }
-            if (collision.transform.position.x > transform.position.x)
-            {
-                Player_idle.instance.KnockFromRight = false;
-            }*/
             collision.GetComponent<Health>().TakeDamage(damage);
         }
     }

@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class Player_idle : MonoBehaviour
 {
     public static Player_idle instance { get; private set; }
-    [SerializeField] private Rigidbody2D rb;
+    private Rigidbody2D rb;
     private Animator anim;
     public ParticleSystem dusts;
 
@@ -35,18 +35,18 @@ public class Player_idle : MonoBehaviour
 
     void Start()
     {
-/*        if (instance == null)
+        if (instance == null)
         {
             instance = this;
         }
         else
         {
             Destroy(gameObject);
-        }*/
+        }
+
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         ScoreText.text = "Score: " + Scoring.totalScore;
-        
     }
     void Update()
     {   
@@ -58,25 +58,13 @@ public class Player_idle : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(Health.instance != null && Health.instance.currentHealth>0 /*&& KBCounter <=0*/)
+        if(Health.instance != null && Health.instance.currentHealth>0)
         {
             rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
-
             anim.SetFloat("xVelocity", Math.Abs(rb.velocity.x));
             anim.SetFloat("yVelocity", rb.velocity.y);
         }
-/*        else
-        {
-            if(KnockFromRight = true)
-            {
-                rb.velocity = new Vector2(-KBCounter, KBForce);
-            }
-            if(KnockFromRight == false)
-            {
-                rb.velocity = new Vector2(KBCounter, KBForce);
-            }
-            KBCounter -= Time.deltaTime;
-        }*/
+
     }
     private void Jump()
     {
@@ -121,12 +109,21 @@ public class Player_idle : MonoBehaviour
             Debug.Log(Scoring.totalScore);
             collision.gameObject.SetActive(false);
         }
+        if(collision.tag == "FinishPoint")
+        {
+
+        }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        isGrounded = false;
-        anim.SetBool("isJumping", !isGrounded);
-        // Fall animation set
+        /*isGrounded = false;
+        anim.SetBool("isJumping", !isGrounded);*/
+    }
+    public void PlayerDontMove()
+    {
+        rb.gravityScale = 0;
+        rb.velocity = Vector2.zero;
+        Debug.Log("a");
     }
 
 }

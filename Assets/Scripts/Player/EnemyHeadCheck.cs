@@ -9,7 +9,7 @@ public class EnemyHeadCheck : MonoBehaviour
     private bool hasExitedDeadPoint = false;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<DeadPoint>()&& !hasExitedDeadPoint)
+        if (collision.GetComponent<DeadPoint>()&& hasExitedDeadPoint == false)
         {
             rb.velocity = new Vector2(rb.velocity.x, 0f);
             rb.AddForce(Vector2.up * 300f);

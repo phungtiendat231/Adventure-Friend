@@ -28,25 +28,25 @@ public class FireTrap : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-/*        if(collision.tag =="Player")
+        if (collision.tag == "Player")
         {
             //playerHealth = collision.GetComponent<Health>();
-            if(!triggered)
+            if (!triggered)
             {
                 StartCoroutine(ActivateFireTrap());
             }
-            if(activate)
+            if (activate)
                 collision.GetComponent<Health>().TakeDamage(damage);
 
-        }*/ // lý do fire trap ăn 2 dame là do gọi 2 lần TakeDamage
+        } // lý do fire trap ăn 2 dame là do gọi 2 lần TakeDamage
     }
-    private void OnTriggerExit2D(Collider2D collision)
+/*    private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
             playerHealth = null;
         }
-    }
+    }*/
     private IEnumerator ActivateFireTrap()
     {
         triggered = true;

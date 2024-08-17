@@ -8,6 +8,7 @@ public class SoundManager : MonoBehaviour
     public static SoundManager instance {  get; private set; }
     public Sound[] musicSounds, sfxSounds;
     public AudioSource musicSource, sfxSource;
+    public string SongName;
     private void Awake()
     {
         if (instance == null) 
@@ -22,8 +23,7 @@ public class SoundManager : MonoBehaviour
     }
     private void Start()
     {
-        
-        PlayMusic("Theme_Level 0");
+        PlayMusic(SongName);
     }
     public void PlayMusic(string name)
     {

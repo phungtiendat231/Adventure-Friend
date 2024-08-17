@@ -29,10 +29,10 @@ public class Health : MonoBehaviour
     {
         instance = this;
         rb = GetComponent<Rigidbody2D>();
-        currentHealth = startingHealth;
         anim = GetComponent<Animator>();
         sR = GetComponent<SpriteRenderer>();    
         player = GameObject.Find("Player");
+        currentHealth = startingHealth;
         startPos = respawnPos.position;
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -66,7 +66,7 @@ public class Health : MonoBehaviour
             isPlayerDeath = true;
             rb.gravityScale = 0;
             rb.velocity = Vector2.zero;
-            StartCoroutine(ResetAfterDelay(1f));
+            StartCoroutine(ResetAfterDelay(2f));
             
         }
     }
@@ -78,18 +78,17 @@ public class Health : MonoBehaviour
         // Thiết lập Trigger tiếp theo sau 2 giây
         //anim.SetTrigger("Back");
         anim.ResetTrigger("Death");
-        
         // Reset lại vị trí và currentHealth
-        player.transform.position = startPos;
         yield return new WaitForSeconds(1f);
-        bool isGrounded = false;
+        player.transform.position = startPos;
+        bool isGrounded = true;
+        currentHealth = 5;
+        isPlayerDeath = true;
         rb.gravityScale = 4;
         anim.SetBool("isJumping", !isGrounded);
-        
         anim.Play("Player_Idle_Run");
-        currentHealth = 1;
-        isPlayerDeath = false;
-        
+
+
     }
 
     IEnumerator Invinciable()
