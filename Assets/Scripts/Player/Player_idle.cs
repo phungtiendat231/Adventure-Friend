@@ -12,13 +12,16 @@ public class Player_idle : MonoBehaviour
     private Rigidbody2D rb;
     private Animator anim;
     public ParticleSystem dusts;
+    public LayerMask groundLayer;
+    public LayerMask wallLayer;
+    public Transform groundCheck;
 
     [Header("-------------Moving------------------")]
     private float horizontal;
     [SerializeField] public float speed;
     [SerializeField] public float jumpingForce;
     private bool isFacingRight = true;
-    bool isGrounded = false;
+    bool isGrounded ;
     int JumpCount = 2;
 
 /*    public float KBForce;
@@ -29,7 +32,14 @@ public class Player_idle : MonoBehaviour
     [Header("-------------HealthBar---------------")]
     public Text ScoreText;
     private int score;
-    
+    [Header("-------------Wall and WallJump-----------")]
+    public Transform wallCheck;
+    bool isWallTouch;
+    bool isSliding;
+    public float wallSlidingSpeed;
+    public float wallJumpDuration;
+    public Vector2 wallJumpForce;
+    bool wallJumping;
 
 
 
@@ -49,11 +59,27 @@ public class Player_idle : MonoBehaviour
         ScoreText.text = "Score: " + Scoring.totalScore;
     }
     void Update()
-    {   
+    {
+        isGrounded = Physics2D.OverlapCapsule(groundCheck.position, new Vector2(1.02f, 0.23f), CapsuleDirection2D.Horizontal,0,groundLayer);
+        isWallTouch = Physics2D.OverlapBox(wallCheck.position, new Vector2(0.24f, 1.5f), 0, wallLayer);
+        if(isWallTouch == true)
+        {
+            Debug.Log("Touch");
+        }
         horizontal = Input.GetAxisRaw("Horizontal");
+        WallJump();
         Jump();
         Flip();
+/*        if(isSliding == true)
+        {
+            anim.SetBool("isWallSliding", isSliding == true);
+        }
+        else
+        {
+            anim.SetBool("isWallSliding", isSliding==false);
+        }*/
         
+
     }
 
     void FixedUpdate()
@@ -64,7 +90,6 @@ public class Player_idle : MonoBehaviour
             anim.SetFloat("xVelocity", Math.Abs(rb.velocity.x));
             anim.SetFloat("yVelocity", rb.velocity.y);
         }
-
     }
     private void Jump()
     {
@@ -75,8 +100,41 @@ public class Player_idle : MonoBehaviour
             isGrounded = false;
             JumpCount -= 1;
             anim.SetBool("isJumping", !isGrounded);
-            CreateDust();
-            
+            //CreateDust();
+
+        }
+    }
+    private void WallJump()
+    {
+
+        /*if (isWallTouch && !isGrounded && horizontal != 0)
+        {
+
+            isSliding = true;
+            rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -wallSlidingSpeed, float.MaxValue));
+            JumpCount = 2;
+            anim.SetBool("isWallSliding", isSliding == false);
+        }
+        else
+        {
+            isSliding = false;
+            Debug.Log("b");
+            anim.SetBool("isWallSliding", isSliding == true);
+        }*/if (isWallTouch && !isGrounded && horizontal != 0)
+        {
+
+            isSliding = true;
+            rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -wallSlidingSpeed, float.MaxValue));
+            JumpCount = 2;
+            Debug.Log("IsSlide");
+            anim.SetBool("isJumping", false);
+            anim.SetTrigger("IsSliding");
+        }
+        else
+        {
+            isSliding = false;
+            Debug.Log("Is'nSlide");
+            anim.SetTrigger("Isn'tSliding");
         }
     }
 
@@ -116,8 +174,8 @@ public class Player_idle : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        /*isGrounded = false;
-        anim.SetBool("isJumping", !isGrounded);*/
+        isGrounded = false;
+        /*anim.SetBool("isJumping", !isGrounded);*/
     }
     public void PlayerDontMove()
     {

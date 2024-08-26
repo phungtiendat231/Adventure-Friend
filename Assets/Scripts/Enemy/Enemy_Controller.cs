@@ -39,10 +39,16 @@ public class Enemy_Controller : MonoBehaviour
 
     void Update()
     {
-        if (isWaiting == false)
+        if (targetPositions.Length ==0)
         {
-            MoveToObject();
+            return;
         }
+        else 
+        {
+            if(isWaiting == false)
+                MoveToObject();
+        }
+        
     }
 
     private void MoveToObject()
