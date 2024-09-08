@@ -37,8 +37,6 @@ public class Player_idle : MonoBehaviour
     bool isWallTouch;
     bool isSliding;
     public float wallSlidingSpeed;
-    public float wallJumpDuration;
-    public Vector2 wallJumpForce;
     bool wallJumping;
 
 
@@ -106,34 +104,17 @@ public class Player_idle : MonoBehaviour
     }
     private void WallJump()
     {
-
-        /*if (isWallTouch && !isGrounded && horizontal != 0)
+        if (isWallTouch && !isGrounded && horizontal != 0)
         {
-
             isSliding = true;
             rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -wallSlidingSpeed, float.MaxValue));
             JumpCount = 2;
-            anim.SetBool("isWallSliding", isSliding == false);
-        }
-        else
-        {
-            isSliding = false;
-            Debug.Log("b");
-            anim.SetBool("isWallSliding", isSliding == true);
-        }*/if (isWallTouch && !isGrounded && horizontal != 0)
-        {
-
-            isSliding = true;
-            rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -wallSlidingSpeed, float.MaxValue));
-            JumpCount = 2;
-            Debug.Log("IsSlide");
             anim.SetBool("isJumping", false);
             anim.SetTrigger("IsSliding");
         }
         else
         {
             isSliding = false;
-            Debug.Log("Is'nSlide");
             anim.SetTrigger("Isn'tSliding");
         }
     }
@@ -158,7 +139,7 @@ public class Player_idle : MonoBehaviour
         JumpCount = 2;
         isGrounded = true;
         anim.SetBool("isJumping", !isGrounded);
-        if(collision.tag=="Fruits")
+        if (collision.tag=="Fruits")
         {
             
             SoundManager.instance.PlaySFX("Collect");
@@ -167,15 +148,14 @@ public class Player_idle : MonoBehaviour
             Debug.Log(Scoring.totalScore);
             collision.gameObject.SetActive(false);
         }
-        if(collision.tag == "FinishPoint")
-        {
-
-        }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        isGrounded = false;
-        /*anim.SetBool("isJumping", !isGrounded);*/
+        if (collision.tag == "Ground")
+        {
+            isGrounded = false;
+            anim.SetBool("isJumping", !isGrounded);
+        }
     }
     public void PlayerDontMove()
     {

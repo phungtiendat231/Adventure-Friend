@@ -51,7 +51,7 @@ public class Health : MonoBehaviour
         if (invulnerable)
             return;
         currentHealth = Mathf.Clamp(currentHealth - damage, 0, startingHealth);
-
+        
         if (currentHealth > 0 && isPlayerDeath == false)
         {
             anim.SetTrigger("Hit");
@@ -62,18 +62,16 @@ public class Health : MonoBehaviour
         {
             anim.SetTrigger("Death");
             SoundManager.instance.PlaySFX("Death");
+            Physics2D.IgnoreLayerCollision(6, 7, true);
             isPlayerDeath = true;
             rb.gravityScale = 0;
             rb.velocity = Vector2.zero;
             StartCoroutine(ResetAfterDelay(2f));
-            
         }
     }
-
     IEnumerator ResetAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
-
         // Thiết lập Trigger tiếp theo sau 2 giây
         //anim.SetTrigger("Back");
         anim.ResetTrigger("Death");
@@ -86,8 +84,6 @@ public class Health : MonoBehaviour
         rb.gravityScale = 4;
         anim.SetBool("isJumping", !isGrounded);
         anim.Play("Player_Idle_Run");
-
-
     }
 
     IEnumerator Invinciable()

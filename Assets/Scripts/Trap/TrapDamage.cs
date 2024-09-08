@@ -5,11 +5,19 @@ using UnityEngine;
 public class TrapDamage : MonoBehaviour
 {
     [SerializeField] protected float damage;
-    
+    public Animator anim;
+    private void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
+
     protected void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.tag =="Player")
         {
+
+            //if(anim.SetBool("isJumping") == true)
+           // anim.SetBool("isJumping", false);
             collision.GetComponent<Health>().TakeDamage(damage);
         }
     }

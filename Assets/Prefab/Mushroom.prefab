@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 2249032617853058838}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -52.490005, y: -2.86, z: 0}
+  m_LocalPosition: {x: -53.37, y: -2.86, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -56,7 +56,7 @@ Transform:
   m_GameObject: {fileID: 4674264429767608504}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -62.93, y: -2.86, z: 0}
+  m_LocalPosition: {x: -62.57, y: -2.86, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -243,8 +243,8 @@ MonoBehaviour:
   waitTime: 3
   anim_Idle: Mushroom_Idle
   anim_Run: Mushroom_Run
-  anim_Hit: Mushroom_Hit
-  anim_Death: Mushroom_Die
+  anim_Hit: 
+  anim_Death: Mushroom_Hit
 --- !u!114 &8205804619190611241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,6 +258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
+  anim: {fileID: 0}
 --- !u!212 &3532538921393685600
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -297,7 +298,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1314273151
-  m_SortingLayer: 7
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: -6367560908665664636, guid: a6465882e447a7346b1d80709f6094be, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -339,7 +340,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.030354917, y: -0.3121612}
