@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2788218216320659818}
   - component: {fileID: 3312018958185217770}
   - component: {fileID: 6759777233067788775}
-  - component: {fileID: 2796755345243059502}
+  - component: {fileID: 7164390959009388615}
   m_Layer: 0
   m_Name: End
   m_TagString: FinishPoint
@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -23.3, y: 7.6, z: -0.23411483}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.0069, y: 0.9897, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94ef85efd00f3a849a4446c7d09b8476, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!95 &2796755345243059502
+--- !u!95 &7164390959009388615
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0

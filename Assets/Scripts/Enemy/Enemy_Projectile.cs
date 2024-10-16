@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy_Projectile : TrapDamage
+public class Enemy_Projectile : MonoBehaviour
 {
     [SerializeField] private float speed;
     [SerializeField] private float resetTime;
@@ -26,7 +26,6 @@ public class Enemy_Projectile : TrapDamage
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        base.OnTriggerEnter2D(collision);
         gameObject.SetActive(false);
     }
 }

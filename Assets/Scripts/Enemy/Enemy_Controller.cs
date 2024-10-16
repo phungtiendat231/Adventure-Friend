@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class Enemy_Controller : MonoBehaviour
 {
-    private GameObject player;
     [Header("----------Moving----------")]
     public Transform[] targetPositions;
     int currentTargetIndex = 0;
@@ -21,8 +20,6 @@ public class Enemy_Controller : MonoBehaviour
     [SerializeField] public string anim_Run;
     [SerializeField] public string anim_Hit;
     [SerializeField] public string anim_Death;
-    [Header("----------DeadPoint----------")]
-    private TrapDamage trapDame;
     
 
     
@@ -34,7 +31,6 @@ public class Enemy_Controller : MonoBehaviour
             SetTargetPosition(0); // Bắt đầu từ điểm đầu tiên
         }
         anim = GetComponent<Animator>();
-        player = GameObject.Find("Player");
     }
 
     void Update()
@@ -91,6 +87,7 @@ public class Enemy_Controller : MonoBehaviour
     public void PlayAnimDead()
     {
         anim.Play(anim_Death);
+        
     }
   
 }

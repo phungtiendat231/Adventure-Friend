@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 4632802189331710188}
   - component: {fileID: 7764567890217291429}
   - component: {fileID: 735602598668206240}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: DeadPoint
   m_TagString: DeadPoint
   m_Icon: {fileID: 0}
@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 4021100903316777225}
   - component: {fileID: 36182943729276810}
   - component: {fileID: 2955273119892804565}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Chicken
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -152,7 +152,7 @@ Transform:
   m_GameObject: {fileID: 4503500053475740261}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.781, y: -1.42, z: -0.67295706}
+  m_LocalPosition: {x: -6.9, y: -1.42, z: -0.67295706}
   m_LocalScale: {x: 1.1408644, y: 1.140864, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -179,7 +179,7 @@ MonoBehaviour:
   anim_Idle: Chicken_Idle
   anim_Run: Chicken_Run
   anim_Hit: Chicken_Hit
-  anim_Death: Chicken_Die
+  anim_Death: Die
 --- !u!114 &5727742486762441278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,7 +232,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1314273151
-  m_SortingLayer: 7
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: -23792059411196189, guid: f729d6acae7cd754a864abda75a4bbd7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -274,7 +274,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.030354917, y: -0.3121612}

@@ -4977,7 +4977,7 @@ Transform:
   m_GameObject: {fileID: 7769293096466376768}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.97, y: -0.08, z: -0}
+  m_LocalPosition: {x: 0.97, y: -0.3, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5038,7 +5038,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 5
-  isPlayerDeath: 0
   respawnPos: {fileID: 0}
   iframeDuration: 2
   numberOfFlashs: 2
@@ -5232,7 +5231,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 0.617187
+  MinDistance: 0.46209717
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0

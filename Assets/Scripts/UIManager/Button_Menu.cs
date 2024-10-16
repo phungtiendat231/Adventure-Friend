@@ -26,14 +26,16 @@ public class Button_Menu : MonoBehaviour
         Time.timeScale = 1;
         Scoring.totalScore = 0;
         ScoreText.text = "Score: " + Scoring.totalScore;
-
-
     }
     public void MainMenu()
     {
         SceneManager.LoadScene(0);
         SoundManager.instance.PlayMusic("Theme_Level Menu");
         /*Play4Animation.instance.PlayAnimation();*/
+    }
+    public void Exit()
+    {
+        Application.Quit();
     }
     public void OpenMenuPanel()
     {

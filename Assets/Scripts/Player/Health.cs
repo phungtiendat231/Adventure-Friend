@@ -9,7 +9,7 @@ public class Health : MonoBehaviour
     public static Health instance;
     [Header ("Health")]
     [SerializeField] private float startingHealth;
-    public bool isPlayerDeath = false;
+    private bool isPlayerDeath = false;
     private Rigidbody2D rb;
     public float currentHealth { get; private set; }// get: có thể lấy ra dùng ở các script khác, private set: chỉ có thể thay đổi ở script này
     private Animator anim;
@@ -48,7 +48,7 @@ public class Health : MonoBehaviour
     }
     public void TakeDamage(float damage)
     {
-        if (invulnerable)
+        if (invulnerable == true)
             return;
         currentHealth = Mathf.Clamp(currentHealth - damage, 0, startingHealth);
         
@@ -63,7 +63,6 @@ public class Health : MonoBehaviour
             anim.SetTrigger("Death");
             SoundManager.instance.PlaySFX("Death");
             Physics2D.IgnoreLayerCollision(6, 7, true);
-            isPlayerDeath = true;
             rb.gravityScale = 0;
             rb.velocity = Vector2.zero;
             StartCoroutine(ResetAfterDelay(2f));
@@ -80,7 +79,7 @@ public class Health : MonoBehaviour
         player.transform.position = startPos;
         bool isGrounded = true;
         currentHealth = 5;
-        isPlayerDeath = true;
+        isPlayerDeath = false;
         rb.gravityScale = 4;
         anim.SetBool("isJumping", !isGrounded);
         anim.Play("Player_Idle_Run");

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8045651710731626105}
   - component: {fileID: 3544644038787178912}
   - component: {fileID: 4883623196937708675}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Chain (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,7 +121,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4121771990313093776}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Chain_Dot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -163,7 +163,7 @@ GameObject:
   - component: {fileID: 3764017931150834685}
   - component: {fileID: 4202425525882068604}
   - component: {fileID: 5658035797242877546}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Chain (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -276,7 +276,7 @@ GameObject:
   - component: {fileID: 936956479125233707}
   - component: {fileID: 3705281124906930775}
   - component: {fileID: 3739798441323975537}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: SpikeBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -392,7 +392,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  angle: 25
 --- !u!1 &6288843726276713881
 GameObject:
   m_ObjectHideFlags: 0
@@ -406,7 +405,7 @@ GameObject:
   - component: {fileID: 1765884122722378758}
   - component: {fileID: 7718098375767154874}
   - component: {fileID: 610430125726123370}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: SpikeBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -560,7 +559,7 @@ GameObject:
   - component: {fileID: 5451379730406885283}
   - component: {fileID: 6042143474207125043}
   - component: {fileID: 6115222960257298438}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Chain (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -672,7 +671,7 @@ GameObject:
   - component: {fileID: 735838820352289966}
   - component: {fileID: 984301107222356051}
   - component: {fileID: 7152552904859424546}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Chain (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -784,7 +783,7 @@ GameObject:
   - component: {fileID: 4524813458201776222}
   - component: {fileID: 9138087699228960415}
   - component: {fileID: 2461549433309777617}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Chain (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -896,7 +895,7 @@ GameObject:
   - component: {fileID: 3826258924997432592}
   - component: {fileID: 2350781203458432041}
   - component: {fileID: 5332147962256641832}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Chain (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1008,7 +1007,7 @@ GameObject:
   - component: {fileID: 824174167669157281}
   - component: {fileID: 1790197794203674505}
   - component: {fileID: 4195657071524598051}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Chain (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1120,7 +1119,7 @@ GameObject:
   - component: {fileID: 8807817866711053335}
   - component: {fileID: 4236690742807666549}
   - component: {fileID: 4259654841967134970}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Chain (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1232,7 +1231,7 @@ GameObject:
   - component: {fileID: 6283817222491694844}
   - component: {fileID: 2765020316527568556}
   - component: {fileID: 8127198411484577158}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Chain (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -8,15 +8,23 @@ public class Bullet : MonoBehaviour
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject[] bullets;
     private float cooldownTimer;
+    private Animator anim;
+    public string attackName;
+    private void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
 
     private void Attack()
     {
+        
         cooldownTimer = 0;
         int bulletIndex = FindBullets();
         if (bulletIndex != -1) // Kiểm tra xem có đạn không bị hủy
         {
             bullets[bulletIndex].transform.position = firePoint.position;
             bullets[bulletIndex].GetComponent<Enemy_Projectile>().ActivateProjectile();
+            anim.Play(attackName);
         }
     }
 

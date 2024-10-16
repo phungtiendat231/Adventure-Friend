@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 2404701834235249639}
   - component: {fileID: 7606167908191370436}
   - component: {fileID: 1550268855082180003}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: DeadPoint
   m_TagString: DeadPoint
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ Transform:
   m_GameObject: {fileID: 4984949308395965158}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0734, y: 0.96, z: 0.67295706}
+  m_LocalPosition: {x: 0.0734, y: 0.41, z: 0.67295706}
   m_LocalScale: {x: 0.4395387, y: 0.07493512, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -197,11 +197,11 @@ GameObject:
   m_Component:
   - component: {fileID: 2831313390727530377}
   - component: {fileID: 4009668286577881511}
-  - component: {fileID: 8205804619190611241}
   - component: {fileID: 3532538921393685600}
   - component: {fileID: 4251614007677833925}
   - component: {fileID: 8681508467907803167}
-  m_Layer: 7
+  - component: {fileID: 4623532152185284110}
+  m_Layer: 0
   m_Name: Mushroom
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -217,7 +217,7 @@ Transform:
   m_GameObject: {fileID: 8993034001228490445}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -57.8, y: -2.6, z: -0.67295706}
+  m_LocalPosition: {x: -61.84, y: -2.6, z: -0.67295706}
   m_LocalScale: {x: 1.1408644, y: 1.140864, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -239,26 +239,12 @@ MonoBehaviour:
   targetPositions:
   - {fileID: 4777133345602535384}
   - {fileID: 2304029348905751396}
-  speed: 6
+  speed: 4
   waitTime: 3
   anim_Idle: Mushroom_Idle
   anim_Run: Mushroom_Run
   anim_Hit: 
   anim_Death: Mushroom_Hit
---- !u!114 &8205804619190611241
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8993034001228490445}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 525702ffe1c975844b4d2846f06ae2f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 1
-  anim: {fileID: 0}
 --- !u!212 &3532538921393685600
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -343,7 +329,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.030354917, y: -0.3121612}
+  m_Offset: {x: -0.017180204, y: -0.39626905}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -354,7 +340,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.9825467, y: 1.6917977}
+  m_Size: {x: 1.609559, y: 1.2456656}
   m_EdgeRadius: 0
 --- !u!95 &8681508467907803167
 Animator:
@@ -377,3 +363,16 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4623532152185284110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8993034001228490445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 525702ffe1c975844b4d2846f06ae2f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1

@@ -60,10 +60,10 @@ public class Player_idle : MonoBehaviour
     {
         isGrounded = Physics2D.OverlapCapsule(groundCheck.position, new Vector2(1.02f, 0.23f), CapsuleDirection2D.Horizontal,0,groundLayer);
         isWallTouch = Physics2D.OverlapBox(wallCheck.position, new Vector2(0.24f, 1.5f), 0, wallLayer);
-        if(isWallTouch == true)
+/*        if(isWallTouch == true)
         {
             Debug.Log("Touch");
-        }
+        }*/
         horizontal = Input.GetAxisRaw("Horizontal");
         WallJump();
         Jump();
@@ -127,13 +127,13 @@ public class Player_idle : MonoBehaviour
             Vector3 localScale = transform.localScale;
             localScale.x *= -1f;
             transform.localScale = localScale;
-            CreateDust();
+            //CreateDust();
         }
     }
-    void CreateDust()
+/*    void CreateDust()
     {
         dusts.Play();
-    }
+    }*/
     private void OnTriggerEnter2D(Collider2D collision)
     {
         JumpCount = 2;
@@ -161,7 +161,6 @@ public class Player_idle : MonoBehaviour
     {
         rb.gravityScale = 0;
         rb.velocity = Vector2.zero;
-        Debug.Log("a");
     }
 
 }

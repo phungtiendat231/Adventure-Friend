@@ -10,15 +10,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] Animator anim;
     private int number = 1;
     public GameObject scene;
-    public Rigidbody2D rb;
     private void Start()
     {
-        /*if(!scene.activeSelf)
+        if (!scene.activeSelf)
         {
             scene.SetActive(true);
-        }*/
+        }
         anim.SetTrigger("Start");
-        rb = GetComponent<Rigidbody2D>();
     }   
     void Awake()
     {
@@ -43,12 +41,23 @@ public class GameManager : MonoBehaviour
     IEnumerator WaitLevel()
     {
         Player_idle.instance.PlayerDontMove();
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.3f);
         anim.SetTrigger("End");
-        /*yield return new WaitForSeconds(1);*/
+        /*yield return new WaitForSeconds(1);*//*
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
         anim.SetTrigger("Start");
         SoundManager.instance.PlayMusic("Theme_Level "+number);
-
+*/
+        if (SceneManager.GetActiveScene().buildIndex < SceneManager.sceneCountInBuildSettings - 1)
+        {
+            yield return new WaitForSeconds(0.3f);
+            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+            anim.SetTrigger("Start");
+            SoundManager.instance.PlayMusic("Theme_Level " + number);
+        }
+        else
+        {
+            SceneManager.LoadScene("Home");
+        }
     }
 }

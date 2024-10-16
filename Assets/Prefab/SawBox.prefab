@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9027066752578576497}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: SawBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 7898140749929226382}
   - component: {fileID: 6911034815395696431}
   - component: {fileID: 5874159288848772014}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Saw
   m_TagString: Traps
   m_Icon: {fileID: 0}
@@ -138,7 +138,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -374908449
-  m_SortingLayer: 6
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: ca5ce7f3f3ac3bb499d37119b1867d7e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -227,7 +227,7 @@ GameObject:
   m_Component:
   - component: {fileID: 259225227285184830}
   - component: {fileID: 8904152437110946730}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: PosA
   m_TagString: Traps
   m_Icon: {fileID: 0}
@@ -288,7 +288,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1753695601
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: c67ce4f5bcebc8943a10698b6614f86f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -311,7 +311,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1180349687163987972}
   - component: {fileID: 5604169742674976710}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: PosB
   m_TagString: Traps
   m_Icon: {fileID: 0}
@@ -372,7 +372,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1753695601
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: c67ce4f5bcebc8943a10698b6614f86f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

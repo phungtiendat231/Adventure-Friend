@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3465905302786859883}
   - component: {fileID: 37332091053651245}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: PosC
   m_TagString: Traps
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
@@ -93,7 +93,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7500650629905001947}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: SawBox (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130,7 +130,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1273444313336641121}
   - component: {fileID: 4517397548328917496}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: PosA
   m_TagString: Traps
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
@@ -214,7 +214,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7620032958229908748}
   - component: {fileID: 5225530368436340677}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: PosB
   m_TagString: Traps
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
@@ -298,7 +298,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7846676952561778545}
   - component: {fileID: 3126374753235234216}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: PosD
   m_TagString: Traps
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
@@ -386,7 +386,7 @@ GameObject:
   - component: {fileID: 5956267751332196737}
   - component: {fileID: 1673692146418299339}
   - component: {fileID: 3417414320367926626}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Saw
   m_TagString: Traps
   m_Icon: {fileID: 0}
